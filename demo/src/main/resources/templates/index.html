@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Administration</title>
+    <meta charset = "ISO-8859-1" />
+       <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div align = "center">
+    <div align="center">
+        <h1><a href="/new_course">Add new training</a></h1>
+    </div>
+    
+    <table border = "1" cellpadding = "10">
+        <thead>
+            <tr>
+                <th> Name of the training </th>
+                <th> Code name course </th>
+                <th> Name of the trainer</th>
+               <th> About the training</th>
+               <th> Day of the training</th>
+               <th> operations </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${course.empty}">
+                <td colspan="6"style="text-align:center"> No trainings </td> 
+            </tr>
+            <tr th:each="team : ${course}">
+                <td><span th:text="${team.name}"> </span></td>
+                <td><span th:text="${team.dtype}"> </span></td>
+                <td><span th:text="${team.trainer}"> </span></td>
+                <td><span th:text="${team.about}"> </span></td> 
+                <td><span th:text="${team.dstart}"> </span></td>           
+                <td>
+                    <a th:href="@{/edit_course/{dtype}(dtype=${team.dtype})}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/delete_team/{name}(name=${team.name})}">Delete</a>
+                </td>  
+                
+                </td>
+               
+        </tbody>
+    </table>
+<br><hr><br>
+<h1>Choose a trainging</h1>
+    <a href="/new_c1user"> Course 1  </a><br><br>
+    <a href="/new_c2user"> Course 2 </a><br><br>
+    <table border = "1" cellpadding = "10">
+        <thead>
+            <tr>
+                <th> username </th>
+                <th> email </th>
+                <th> course </th>
+                <th> grade </th>
+                <th> company </th>
+                <th> operations </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${c1_users.empty}">
+                <td colspan="6"style="text-align:center"> No student for cours 1 Registered </td> 
+            </tr>
+            <tr th:each="c1user : ${c1_users}">
+                <td><span th:text="${c1user.username}"> </span></td>
+                <td><span th:text="${c1user.email}"> </span></td>
+                <td><span th:text="${c1user.dtype}"> </span></td>
+                <td><span th:text="${c1user.grade}"> </span></td>
+                <td><span th:text="${c1user.company}"> </span></td>
+                <td>
+                    <a th:href="@{/edit_c1user/{dtype}(dtype=${c1user.dtype})}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/delete_c1user/{username}(username=${c1user.username})}">Delete</a>
+                </td>
+                </td>
+            </tr>
+
+            <tr th:if="${c2_users.empty}">
+                <td colspan="6"style="text-align:center"> No student for cours 2 Registered </td> 
+            </tr>
+            <tr th:each="c2user : ${c2_users}">
+                <td><span th:text="${c2user.username}"> </span></td>
+                <td><span th:text="${c2user.email}"> </span></td>
+                <td><span th:text="${c2user.dtype}"> </span></td>
+                <td><span th:text="${c2user.grade}"> </span></td>
+                <td><span th:text="${c2user.company}"> </span></td>
+                <td>
+                    <a th:href="@{/edit_c2user/{dtype}(dtype=${c2user.dtype})}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/delete_c2user/{username}(username=${c2user.username})}">Delete</a>
+                </td>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<br><br>
+<div align = "center">
+NOTES:<br>
+<b>Number of the curs 1 users: <label th:text="${c1_users.size()}"></label></b><br>
+<b>Number of the curs 2 users: <label th:text="${c2_users.size()}"></label></b>
+</div>
+</body>
+</html> 

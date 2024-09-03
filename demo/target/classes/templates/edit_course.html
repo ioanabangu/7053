@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Edit</title>
+</head>
+<body>
+    <div align="center">
+        <table>
+            <h1>Edit</h1>
+            <br />
+            <form action="#" th:action="@{/save_team}" th:object="${team}" 
+                method="post">
+    
+                <table border="0" cellpadding="10">
+                    <tr>   
+                        <td> Name of the Training </td>
+                        <td> <input type="text" th:field="*{name}" /></td> 
+                    </tr> 
+                    <tr>    
+                        <td> Code of the Training</td>
+                        <td> <input type="text" th:field="*{dtype}" /></td> 
+                    </tr>    
+                    <tr>    
+                        <td> Name of the Trainer</td>
+                        <td> <input type="text" th:field="*{trainer}" /></td> 
+                    </tr>   
+                    <tr>    
+                        <td> About</td>
+                        <td> <input type="text" th:field="*{about}" /></td> 
+                    </tr>          
+                    <tr>    
+                        <td> Date </td>
+                        <td> <input type="date" th:field="*{dstart}" /></td> 
+                    </tr>
+                                            
+                    <tr>    
+                        <td colspan="2"> <button type="submit">Update</button>  </td> 
+                    </tr>
+                </form>
+            </table>    
+    </div>
+</body>
+</html> 
